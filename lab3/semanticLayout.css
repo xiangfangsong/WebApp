@@ -1,0 +1,45 @@
+header{
+    background: #1D2475;
+    color: white;
+}
+
+#green{
+    border: 10px solid white;
+    background: white;
+}
+
+#orange{
+    size: 14pt;
+    color: #CCCCCC
+}
+
+.purple{border-bottom: 2px dashed blue;}
+
+figure{
+    border: 4px solid #1D2475;
+    border-radius: 15px;
+    background: #99CCFF;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+body{
+    background: url("https://selab.hanyang.ac.kr/courses/cse326/2019/labs/images/3/blueTextureBG.jpg") center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.right_align{text-align: right}
+.image{float: right;}
+
+aside{
+    float: left;
+    width: 150px;
+    background: #3366CC;
+    margin-right: 10px;
+     /*这里有问题！！！！！PPT第10页liquid布局*/
+}
+
+:hover{background: #A6CE39}
+
+#main{overflow: hidden}
