@@ -1,0 +1,123 @@
+body{
+    background-image: url("background.png");
+    font: 8pt Verdana,Tahoma,sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#title_bar {
+    background-image: url("bannerbg.png");
+    text-align: center;
+    height: 50px;
+}
+
+h1{
+    font: 24pt bold Tahoma,Verdana,sans-serif;
+    text-align: center;
+    text-shadow: 3px 3px #999999;
+}
+
+#overall{
+    width: 1050px;
+    /*height: 1045px;*/
+    margin: 0 auto;
+    border: 4px gray solid;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#main{
+    width: 800px;
+    float: left;
+}
+
+#img_rotten{
+    background-image: url("rbg.png");
+    height: 83px;
+    font: 48pt bold;
+    color: red;
+}
+
+.reviews{
+    width: 47%;
+    height: auto;
+}
+
+#r1 {
+    float: left;
+    padding-left: 2%;
+    padding-right: 1%;
+}
+
+#r2 {
+    float: right;
+    padding-left: 1%;
+    padding-right: 2%;
+}
+
+q{
+    font: 8pt bold;
+}
+
+.quote{
+    border: 2px gray solid;
+    border-radius: 10px;
+    background: #E8DC9B;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.quote_img{
+    margin-right: 5px;
+    float: left;
+}
+
+.quote_author{
+    margin-bottom: 20pt;
+}
+
+.img_critic{
+    float: left;
+    margin-right: 5px;
+}
+
+span{
+    font-style: italic;
+}
+
+#right{
+    width: 250px;
+    background: #A2B964;
+    float: right;
+}
+
+dl{
+    margin: 10pt;
+    font: 8pt bold Arial,sans-serif;
+}
+
+dt{
+    margin-top: 10pt;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+#bot{
+    height: fit-content;
+    width: 1050px;
+    text-align: center;
+    background-color: #A2B964;
+    padding: 5px;
+    float: right;
+}
+
+#w3c{
+    opacity: 0.5;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
