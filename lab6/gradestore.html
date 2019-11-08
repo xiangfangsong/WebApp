@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Grade Store</title>
+		<link href="https://selab.hanyang.ac.kr/courses/cse326/2019/labs/labResources/gradestore.css" type="text/css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<h1>Grade Store</h1>
+
+		<p>
+			The rough economy, along with recent changes in Hanyang University, allow us to offer grades for money.  
+			That's right! All you need to get a desired grade in various courses is cold, hard, cash.
+		</p>
+		
+		<hr />
+		
+		<h2>Buy your Grade today!</h2>
+		<!-- create an HTML Form -->
+		<form action="cheater.php" method="POST">
+			Name:<input type="text" title="Name" name="name"/>
+			ID: <input type="text" title="ID" name="id"/>
+			<br/>
+			Course: 
+			<input type="checkbox" name="c1" title="CSE326"/>CSE326
+			<input type="checkbox" name="c2" title="CSE107"/>CSE107
+			<input type="checkbox" name="c3" title="CSE603"/>CSE603
+			<input type="checkbox" name="c4" title="CSE870"/>CIN870
+			<br/>
+			Grade:
+			<select name="Grade" title="Grade">
+				<option>A+</option>
+				<option>A</option>
+				<option>B+</option>
+				<option>B</option>
+			</select>
+			<br/>
+			Credit Card: <input type="text" name="card" title="card"/>
+				<input type="radio" name="cc" value="Visa" title="Visa"/>Visa
+			<input type="radio" name="cc" value="MasterCard" title="MasterCard"/>MasterCard
+			<div id="submitbutton">
+				<!-- create submit button here -->
+				<input type="submit" value="I am a giant cheater!"/>
+			</div>
+		</form>
+	</body>
+</html>
