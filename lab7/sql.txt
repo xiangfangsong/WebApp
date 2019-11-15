@@ -1,0 +1,70 @@
+CREATE DATABASE college;
+use college;
+
+CREATE TABLE student (
+    student_id INTEGER,
+    name VARCHAR(10),
+    year tinyint DEFAULT 1,
+    dept_no INTEGER,
+    major VARCHAR(20) NOT NULL,
+    PRIMARY KEY (student_id)
+);
+
+CREATE TABLE department (
+    dept_no INTEGER NOT NULL AUTO_INCREMENT,
+    dept_name VARCHAR(20) NOT NULL,
+    office VARCHAR(20) NOT NULL,
+    office_tel VARCHAR(13),
+    PRIMARY KEY (dept_no)
+);
+ALTER TABLE department add UNIQUE(dept_name);
+
+ALTER TABLE student CHANGE COLUMN major major VARCHAR(30);
+DESC student;
+ALTER TABLE student ADD COLUMN gender TINYINT;
+ALTER TABLE student DROP COLUMN gender;
+
+INSERT INTO student VALUES(20070002, 'Jane Smith', 3, 4, 'Business Administration');
+INSERT INTO student VALUES(20060001, 'Ashley Jackson', 4, 4, 'Business Administration');
+INSERT INTO student VALUES(20030001, 'Liam Johnson', 4, 2, 'Electrical Engineering');
+INSERT INTO student VALUES(20040003, 'Jacob Lee', 3, 2, 'Electrical Engineering');
+INSERT INTO student VALUES(20060002, 'Noah Kim', 3, 1, 'Computer Science');
+INSERT INTO student VALUES(20100002, 'Ava Lim', 3, 4, 'Business Administration');
+INSERT INTO student VALUES(20110001, 'Emma Watson', 2, 1, 'Computer Science');
+INSERT INTO student VALUES(20080003, 'Lisa Maria', 4, 3, 'Law');
+INSERT INTO student VALUES(20040002, 'Jacob William', 4, 5, 'Law');
+INSERT INTO student VALUES(20070001, 'Emily Rose', 4, 4, 'Business Administration');
+INSERT INTO student VALUES(20100001, 'Ethan Hunt', 3, 4, 'Business Administration');
+INSERT INTO student VALUES(20110002, 'Jason Mraz' 2, 1, 'Electrical Engineering');
+INSERT INTO student VALUES(20030002, 'John Smith', 5, 1, 'Computer Science');
+INSERT INTO student VALUES(20070003, 'Sophia Park', 4, 3, 'Law');
+INSERT INTO student VALUES(20070007, 'James Michael', 2, 4, 'Business Administration');
+INSERT INTO student VALUES(20100003, 'James Bond', 3, 1, 'Computer Science');
+INSERT INTO student VALUES(20070005, 'Olivia Madison', 2, 5, 'English Language and Literature');
+
+INSERT INTO department(dept_name,office,office_tel) VALUES('Computer Science', 'Science Building 101', '02-3290-0123');
+INSERT INTO department(dept_name,office,office_tel) VALUES('Electrical Engineering', 'Engineering Building 401', '02-3290-2345'); 
+INSERT INTO department(dept_name,office,office_tel) VALUES('Law', 'Law Building 201', '02-3290-7896') ;
+INSERT INTO department(dept_name,office,office_tel) VALUES('Business Administration', 'Business Building 104', '02-3290-1112') ;
+INSERT INTO department(dept_name,office,office_tel) VALUES('English Language and Literature', 'Language Building 303', '02-3290-4412');
+
+UPDATE department set dept_name = 'Electrical and Electronics Engineering' WHERE dept_name = 'Electrical Engineering';
+INSERT INTO department(dept_name,office,office_tel) VALUES('Special Education','Education Building 403','02-3290-2347');
+UPDATE student SET dept_no = (SELECT dept_no FROM department WHERE dept_name='Special Education') WHERE `name`='Emma Watson';
+DELETE FROM student WHERE name='Jason Mraz';
+DELETE FROM student WHERE name='John Smith';
+
+SELECT * FROM student where major='Computer Science';
+SELECT student_id,`year`,major FROM student;
+SELECT * FROM student WHERE `year`=3;
+SELECT * FROM student WHERE `year`=1 or `year`=2;
+SELECT * FROM student s 
+JOIN department d ON s.dept_no=d.dept_no 
+WHERE d.dept_name='Business Administration';
+
+SELECT * FROM student WHERE student_id LIKE '%2007%';
+SELECT * FROM student ORDER BY student_id;
+SELECT *,AVG(year) AS avg FROM student GROUP BY major HAVING avg>3;
+SELECT * FROM student WHERE major='Business Administration' and student_id LIKE '%2007%' LIMIT 2;
+
+
