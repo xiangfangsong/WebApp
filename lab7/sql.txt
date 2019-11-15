@@ -67,4 +67,45 @@ SELECT * FROM student ORDER BY student_id;
 SELECT *,AVG(year) AS avg FROM student GROUP BY major HAVING avg>3;
 SELECT * FROM student WHERE major='Business Administration' and student_id LIKE '%2007%' LIMIT 2;
 
+SELECT role FROM roles,movies WHERE roles.movie_id=movies.id;
+SELECT first_name,last_name FROM actors,movies,roles 
+where movies.id=roles.movie_id and roles.actor_id=actors.id 
+and movies.`name`='Pi';
 
+SELECT first_name,last_name,COUNT(*) FROM (
+(SELECT first_name,last_name FROM actors,movies,roles 
+WHERE actors.id=roles.actor_id AND roles.movie_id=movies.id 
+AND movies.`name`='Kill Bill: Vol. 1') 
+UNION ALL 
+(SELECT first_name,last_name FROM actors,movies,roles 
+WHERE actors.id=roles.actor_id AND roles.movie_id=movies.id 
+AND movies.`name`='Kill Bill: Vol. 2')
+)a GROUP BY first_name,last_name HAVING COUNT(*)>1;
+
+SELECT first_name,last_name,COUNT(*) FROM 
+(SELECT first_name,last_name FROM actors,roles,movies 
+WHERE actors.id=roles.actor_id AND roles.movie_id=movies.id)a 
+GROUP BY first_name,last_name HAVING COUNT(*)>0 ORDER BY COUNT(*) DESC LIMIT 7;
+
+SELECT * FROM movies ORDER BY rank DESC LIMIT 3;
+
+SELECT first_name,last_name,COUNT(*) FROM 
+(SELECT first_name,last_name FROM directors,directors_genres 
+WHERE directors_genres.director_id=directors.id AND 
+directors_genres.genre='Thriller')a GROUP BY first_name,last_name 
+HAVING COUNT(*)>0 ORDER BY COUNT(*) DESC LIMIT 1;
+
+
+SELECT distinct grade FROM courses,grades WHERE courses.id=grades.course_id;
+SELECT DISTINCT students.`name`,grade FROM courses,grades,students 
+WHERE courses.id=grades.course_id AND grades.student_id=students.id AND 
+(grade LIKE 'B%' OR grade LIKE 'A%') AND courses.`name`='Computer Science 143';
+
+SELECT DISTINCT students.`name`,courses.`name`,grade FROM courses,grades,students 
+WHERE courses.id=grades.course_id AND grades.student_id=students.id AND 
+(grade LIKE 'B%' OR grade LIKE 'A%');
+
+SELECT a.`name`,COUNT(a.id) FROM (
+SELECT courses.`name`,students.id FROM courses,students,grades WHERE 
+courses.id=grades.course_id AND grades.student_id=students.id)a 
+GROUP BY a.`name` HAVING COUNT(a.id)>1;
